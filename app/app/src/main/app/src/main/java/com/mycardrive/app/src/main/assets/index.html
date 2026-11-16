@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>myCar-Drive</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #080d16;
+    color: white;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 35px;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #48baff;
+}
+
+#clock {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 22px;
+    padding: 20px 35px;
+    height: 75vh;
+}
+
+.panel {
+    background: #151f30;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+h2 {
+    color: #48baff;
+}
+
+.apps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.app {
+    background: #202d42;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 19px;
+    min-height: 115px;
+}
+
+.app span {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.app:active {
+    background: #2678b9;
+}
+
+.subtitle {
+    color: #aab6c7;
+    font-size: 17px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">myCar-Drive</div>
+    <div id="clock">00:00</div>
+</header>
+
+<main>
+
+<section class="panel">
+    <h2>Welcome to myCar-Drive</h2>
+    <p class="subtitle" id="date"></p>
+    <h1>Drive your world.</h1>
+    <p class="subtitle">Your smart driving dashboard</p>
+</section>
+
+<section class="panel">
+    <h2>Applications</h2>
+
+    <div class="apps">
+
+        <a class="app"
+        href="https://maps.google.com">
+        <span>🗺️</span>Maps
+        </a>
+
+        <a class="app"
+        href="https://open.spotify.com">
+        <span>🎵</span>Spotify
+        </a>
+
+        <a class="app"
+        href="https://music.youtube.com">
+        <span>🎧</span>Music
+        </a>
+
+        <a class="app"
+        href="tel:">
+        <span>📞</span>Phone
+        </a>
+
+    </div>
+</section>
+
+</main>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    document.getElementById("clock").textContent =
+        now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+    document.getElementById("date").textContent =
+        now.toLocaleDateString([], {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        });
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
